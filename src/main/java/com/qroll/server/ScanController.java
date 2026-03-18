@@ -14,10 +14,7 @@ import com.qroll.model.Student;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.InetAddress;
 import java.time.LocalDateTime;
@@ -54,7 +51,7 @@ public class ScanController {
         }
     }
 
-    @PatchMapping("/scan")
+    @PostMapping("/scan")
     public ResponseEntity<Map<String , String >> scan(
             @RequestParam String studentId,
             @RequestParam String token ,
