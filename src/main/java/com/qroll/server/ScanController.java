@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.InetAddress;
 import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.function.Consumer;
@@ -43,6 +44,14 @@ public class ScanController {
 
     public void setOnNewScan(Consumer<AttendanceRecord> callback) {
         this.onNewScan = callback;
+    }
+
+    public static String getLocalIp() {
+        try {
+            return InetAddress.getLocalHost().getHostAddress();
+        } catch (Exception e) {
+            return "127.0.0.1";
+        }
     }
 
     @PatchMapping("/scan")
@@ -94,6 +103,8 @@ public class ScanController {
                 "message", "Attendance marked successfully!",
                 "name", student.getFullName()
         ));
+
+
     }
 
 
