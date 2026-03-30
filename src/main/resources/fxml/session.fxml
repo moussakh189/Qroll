@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.Insets?>
+
+<ScrollPane fitToWidth="true"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.qroll.gui.SessionController"
+            styleClass="content-scroll">
+
+
+    <fx:define>
+        <ToggleGroup fx:id="typeGroup"/>
+    </fx:define>
+
+    <VBox spacing="24" styleClass="Content-pane">
+        <padding><Insets top="32" right="40" bottom="32" left="40"/></padding>
+
+        <Label text="Session Management" styleClass="page-title"/>
+
+        <HBox spacing="40" alignment="CENTER_LEFT">
+
+
+            <VBox spacing="8">
+                <Label text="Module" styleClass="field-label"/>
+                <ComboBox fx:id="moduleCombo" promptText="Select module" prefWidth="280"
+                          styleClass="combo-field"/>
+            </VBox>
+
+            <VBox spacing="8">
+                <Label text="Session type" styleClass="field-label"/>
+                <HBox spacing="20" alignment="CENTER_LEFT">
+                    <RadioButton fx:id="lectureRadio"
+                                 text="Lecture"  toggleGroup="$typeGroup"/>
+                    <RadioButton fx:id="labRadio"
+                                 text="Lab"  toggleGroup="$typeGroup"/>
+                    <RadioButton fx:id="tutorialRadio" text="Tutorial" toggleGroup="$typeGroup"/>
+                </HBox>
+            </VBox>
+        </HBox>
+
+
+        <HBox spacing="16">
+            <Button fx:id="startBtn"
+                    text="Start Session"
+                    onAction="#onStartClicked"
+                    prefWidth="160" prefHeight="42"
+                    styleClass="btn-start"/>
+
+            <Button fx:id="endBtn"
+                    text="End Session"
+                    onAction="#onEndClicked"
+                    prefWidth="160" prefHeight="42"
+                    styleClass="btn-end"/>
+        </HBox>
+
+        <Label fx:id="statusLabel"
+               text="No active session"
+               styleClass="status-label"/>
+
+
+    <VBox spacing="12" alignment="CENTER">
+        <Label text="QR Code — click to fullscreen" styleClass="field-label"/>
+
+        <StackPane styleClass="qr-container" prefWidth="340" prefHeight="340">
+            <ImageView fx:id="qrImageView"
+                       fitWidth="320" fitHeight="320"
+                       preserveRatio="true"
+                       styleClass="qr-image"/>
+        </StackPane>
+
+
+        <Label text="Rotates every 30 seconds — students scan this with their phone camera"
+               styleClass="hint-label"/>
+
+    </VBox>
+
+        <HBox alignment="CENTER">
+            <VBox alignment="CENTER" spacing="4">
+                <Label text="Session duration" styleClass="field-label"/>
+                <Label fx:id="timerLabel" text="00:00:00" styleClass="timer-label"/>
+            </VBox>
+        </HBox>
+
+    </VBox>
+</ScrollPane>
+
+
+

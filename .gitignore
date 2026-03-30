@@ -41,3 +41,9 @@ qroll.db
 .idea/
 ### Mac OS ###
 .DS_Store
+
+# SQLite
+*.db
+*.db-shm
+*.db-wal
+*.sqbpro

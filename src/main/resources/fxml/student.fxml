@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="0"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.qroll.gui.StudentController">
+
+    <HBox spacing="12" alignment="CENTER_LEFT" styleClass="search-bar">
+        <padding>
+            <Insets top="12" right="20" bottom="12" left="20"/>
+        </padding>
+
+        <Label text="Search:" styleClass="field-label"/>
+        <TextField fx:id="searchField"
+                   promptText="Name or student ID..."
+                   prefWidth="260"
+                   styleClass="search-field"/>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <Button text="Import CSV"
+                onAction="#onImportCSV"
+                styleClass="btn-secondary"
+                prefHeight="34"/>
+
+        <Button text="+ Add Student"
+                onAction="#onAddStudent"
+                styleClass="btn-start"
+                prefHeight="34"/>
+
+        <Button text="Delete Selected"
+                onAction="#onDeleteSelected"
+                styleClass="btn-end"
+                prefHeight="34"/>
+    </HBox>
+
+    <TableView fx:id="studentTable" VBox.vgrow="ALWAYS" styleClass="dark-table">
+        <columns>
+            <TableColumn fx:id="idCol"    text="Student ID" prefWidth="130"/>
+            <TableColumn fx:id="nameCol"  text="Full Name"  prefWidth="220"/>
+            <TableColumn fx:id="groupCol" text="Group"      prefWidth="90"/>
+            <TableColumn fx:id="emailCol" text="Email"      prefWidth="240"/>
+        </columns>
+        <placeholder>
+            <Label text="No students yet — add one or import a CSV file." styleClass="hint-label"/>
+        </placeholder>
+    </TableView>
+
+
+    <HBox styleClass="search-bar" alignment="CENTER_LEFT" spacing="16">
+        <padding><Insets top="8" right="20" bottom="8" left="20"/></padding>
+        <Label fx:id="statusLabel" text="0 students" styleClass="hint-label"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="importStatusLabel" text="" styleClass="hint-label"/>
+    </HBox>
+
+    <VBox fx:id="addForm" spacing="12" styleClass="report-card" managed="false" visible="false">
+        <padding><Insets top="16" right="24" bottom="16" left="24"/></padding>
+
+        <Label text="ADD NEW STUDENT" styleClass="report-card-title"/>
+
+        <HBox spacing="16" alignment="CENTER_LEFT">
+            <VBox spacing="4">
+                <Label text="Student ID" styleClass="field-label"/>
+                <TextField fx:id="newIdField" promptText="e.g. STU006" prefWidth="150" styleClass="search-field"/>
+            </VBox>
+            <VBox spacing="4">
+                <Label text="Full Name" styleClass="field-label"/>
+                <TextField fx:id="newNameField" promptText="e.g. Fatima Zahra" prefWidth="200" styleClass="search-field"/>
+            </VBox>
+            <VBox spacing="4">
+                <Label text="Group" styleClass="field-label"/>
+                <TextField fx:id="newGroupField" promptText="e.g. G1" prefWidth="80" styleClass="search-field"/>
+            </VBox>
+            <VBox spacing="4">
+                <Label text="Email" styleClass="field-label"/>
+                <TextField fx:id="newEmailField" promptText="e.g. fatima@ens.dz" prefWidth="200" styleClass="search-field"/>
+            </VBox>
+        </HBox>
+        <HBox spacing="10">
+            <Button text="Save Student" onAction="#onSaveNewStudent" styleClass="btn-start" prefWidth="150"/>
+            <Button text="Cancel"       onAction="#onCancelAdd"      styleClass="btn-end"   prefWidth="100"/>
+        </HBox>
+
+        <Label fx:id="formErrorLabel" text="" style="-fx-text-fill: #f85149;"/>
+    </VBox>
+
+
+</VBox>

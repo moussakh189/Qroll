@@ -1,4 +1,5 @@
 package com.qroll.database;
+import org.sqlite.SQLiteConfig;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -7,49 +8,43 @@ import java.sql.Statement;
 public class DatabaseManager {
 
     private static final String DB_URL = "jdbc:sqlite:qroll.db";
-    private  static volatile DatabaseManager instance ;
-    private Connection  connection ;
+    private static volatile DatabaseManager instance;
+    private Connection connection;
 
-
-    private DatabaseManager()
-    {
+    private DatabaseManager() {
         try {
-            connection = DriverManager.getConnection(DB_URL);
-            connection.createStatement().execute(" PRAGMA foreign_keys = ON ");
+            SQLiteConfig config = new SQLiteConfig();
+            config.setBusyTimeout(5000);
+            config.setJournalMode(SQLiteConfig.JournalMode.WAL);
+            config.enforceForeignKeys(true);
+
+            connection = DriverManager.getConnection(DB_URL, config.toProperties());
             createTables();
-            System.out.println("Database Manager : connected to qroll.db");
+            System.out.println("DatabaseManager: connected to qroll.db");
         } catch (SQLException e) {
-            throw new RuntimeException("failed to connect to SQLlite db " , e );
+            throw new RuntimeException("failed to connect to SQLlite db", e);
         }
     }
-
 
     public static DatabaseManager getInstance() {
         if (instance == null) {
             synchronized (DatabaseManager.class) {
                 if (instance == null) {
                     instance = new DatabaseManager();
-
                 }
             }
         }
-        return instance ;
-
+        return instance;
     }
 
     public Connection getConnection() {
         return connection;
     }
 
-
-
     private void createTables() {
+        try (Statement statement = connection.createStatement()) {
 
-        try(Statement statement = connection.createStatement()  )
-        {
-
-
-                statement.execute("""
+            statement.execute("""
                 CREATE TABLE IF NOT EXISTS students (
                     student_id TEXT PRIMARY KEY,
                     full_name  TEXT NOT NULL,
@@ -58,7 +53,7 @@ public class DatabaseManager {
                 )
             """);
 
-                statement.execute("""
+            statement.execute("""
                 CREATE TABLE IF NOT EXISTS modules (
                     module_code TEXT PRIMARY KEY,
                     module_name TEXT NOT NULL,
@@ -66,8 +61,7 @@ public class DatabaseManager {
                 )
             """);
 
-
-                statement.execute("""
+            statement.execute("""
                 CREATE TABLE IF NOT EXISTS sessions (
                     session_id   TEXT PRIMARY KEY,
                     module_code  TEXT REFERENCES modules(module_code),
@@ -79,7 +73,7 @@ public class DatabaseManager {
                 )
             """);
 
-                statement.execute("""
+            statement.execute("""
                 CREATE TABLE IF NOT EXISTS attendance_records (
                     record_id  INTEGER PRIMARY KEY AUTOINCREMENT,
                     student_id TEXT REFERENCES students(student_id),
@@ -90,13 +84,11 @@ public class DatabaseManager {
                 )
             """);
 
-                System.out.println("DatabaseManager: all tables ready");
-            } catch (SQLException e) {
+            System.out.println("DatabaseManager: all tables ready");
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-
-
 
     public void closeConnection() {
         try {
@@ -108,10 +100,4 @@ public class DatabaseManager {
             e.printStackTrace();
         }
     }
-
-        }
-
-
-
-
-
+}

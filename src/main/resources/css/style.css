@@ -1,0 +1,360 @@
+/* ── Root / background ───────────────────────────────────────────────────── */
+.root {
+    -fx-background-color: #0f1117;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-font-size: 13px;
+}
+
+/* ── Tab pane ────────────────────────────────────────────────────────────── */
+.main-tab-pane {
+    -fx-background-color: #0f1117;
+}
+
+.main-tab-pane .tab-header-area {
+    -fx-background-color: #161b22;
+    -fx-padding: 0 0 0 16;
+}
+
+.main-tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: #161b22;
+}
+
+.main-tab-pane .tab {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-padding: 10 20;
+    -fx-cursor: hand;
+}
+
+.main-tab-pane .tab .tab-label {
+    -fx-text-fill: #8b949e;
+    -fx-font-size: 13px;
+    -fx-font-weight: normal;
+}
+
+.main-tab-pane .tab:selected {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #58a6ff transparent;
+    -fx-border-width: 0 0 2 0;
+}
+
+.main-tab-pane .tab:selected .tab-label {
+    -fx-text-fill: #f0f6fc;
+    -fx-font-weight: bold;
+}
+
+.main-tab-pane .tab:hover .tab-label {
+    -fx-text-fill: #c9d1d9;
+}
+
+/* ── Content area ────────────────────────────────────────────────────────── */
+.content-scroll {
+    -fx-background-color: #0f1117;
+    -fx-background: #0f1117;
+}
+
+.content-pane {
+    -fx-background-color: #0f1117;
+}
+
+/* ── Typography ──────────────────────────────────────────────────────────── */
+.page-title {
+    -fx-text-fill: #f0f6fc;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.field-label {
+    -fx-text-fill: #8b949e;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.hint-label {
+    -fx-text-fill: #484f58;
+    -fx-font-size: 12px;
+}
+
+.status-label {
+    -fx-text-fill: #8b949e;
+    -fx-font-size: 13px;
+    -fx-font-style: italic;
+}
+
+.timer-label {
+    -fx-text-fill: #58a6ff;
+    -fx-font-size: 32px;
+    -fx-font-family: "Courier New", monospace;
+    -fx-font-weight: bold;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────────────── */
+.button {
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 6;
+}
+
+.btn-start {
+    -fx-background-color: #238636;
+    -fx-text-fill: white;
+    -fx-border-color: #2ea043;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+}
+
+.btn-start:hover {
+    -fx-background-color: #2ea043;
+}
+
+.btn-start:pressed {
+    -fx-background-color: #1a6629;
+}
+
+.btn-start:disabled {
+    -fx-background-color: #21262d;
+    -fx-text-fill: #484f58;
+    -fx-border-color: #30363d;
+    -fx-opacity: 1;
+}
+
+.btn-end {
+    -fx-background-color: #da3633;
+    -fx-text-fill: white;
+    -fx-border-color: #f85149;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+}
+
+.btn-end:hover {
+    -fx-background-color: #f85149;
+}
+
+.btn-end:pressed {
+    -fx-background-color: #b22a28;
+}
+
+.btn-end:disabled {
+    -fx-background-color: #21262d;
+    -fx-text-fill: #484f58;
+    -fx-border-color: #30363d;
+    -fx-opacity: 1;
+}
+
+/* ── ComboBox ────────────────────────────────────────────────────────────── */
+.combo-field {
+    -fx-background-color: #21262d;
+    -fx-text-fill: #c9d1d9;
+    -fx-border-color: #30363d;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-border-width: 1;
+    -fx-padding: 6 10;
+}
+
+.combo-field .list-cell {
+    -fx-background-color: #21262d;
+    -fx-text-fill: #c9d1d9;
+}
+
+.combo-field:hover {
+    -fx-border-color: #58a6ff;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #161b22;
+    -fx-border-color: #30363d;
+}
+
+.combo-box-popup .list-cell {
+    -fx-background-color: #161b22;
+    -fx-text-fill: #c9d1d9;
+    -fx-padding: 8 12;
+}
+
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #21262d;
+}
+
+/* ── RadioButton ─────────────────────────────────────────────────────────── */
+.radio-button {
+    -fx-text-fill: #c9d1d9;
+    -fx-cursor: hand;
+}
+
+.radio-button .radio {
+    -fx-border-color: #30363d;
+    -fx-background-color: #21262d;
+}
+
+.radio-button:selected .radio {
+    -fx-background-color: #58a6ff;
+    -fx-border-color: #58a6ff;
+}
+
+.radio-button:selected .dot {
+    -fx-background-color: white;
+}
+
+/* ── QR container ────────────────────────────────────────────────────────── */
+.qr-container {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-border-color: #30363d;
+    -fx-border-radius: 12;
+    -fx-border-width: 1;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 12, 0, 0, 4);
+}
+
+.qr-container:hover {
+    -fx-border-color: #58a6ff;
+    -fx-effect: dropshadow(gaussian, rgba(88,166,255,0.3), 16, 0, 0, 0);
+}
+
+/* ── ScrollBar ───────────────────────────────────────────────────────────── */
+.scroll-bar {
+    -fx-background-color: #0f1117;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #30363d;
+    -fx-background-radius: 4;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #484f58;
+}
+
+.scroll-bar .track {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+/* Stats bar */
+.stats-bar { -fx-background-color: #161b22; }
+.stat-label { -fx-text-fill: #8b949e; -fx-font-size: 11px; }
+.stat-value { -fx-text-fill: #f0f6fc; -fx-font-size: 22px; }
+.stat-value-green { -fx-text-fill: #3fb950; -fx-font-size: 22px; }
+.stat-value-red   { -fx-text-fill: #f85149; -fx-font-size: 22px; }
+
+/* Search */
+.search-field { -fx-background-color: #21262d; -fx-text-fill: #c9d1d9; }
+
+/* Tables */
+.dark-table { -fx-background-color: #0d1117; }
+.dark-table .column-header-background { -fx-background-color: #161b22; }
+.dark-table .column-header .label { -fx-text-fill: #8b949e; }
+.dark-table .table-cell { -fx-text-fill: #c9d1d9; }
+
+─────────────────── */
+
+/* Page title */
+.page-title {
+    -fx-text-fill: #f0f6fc;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Courier New", monospace;
+}
+
+/* Report card container */
+.report-card {
+    -fx-background-color: #161b22;
+    -fx-border-color: #30363d;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+.report-card-title {
+    -fx-text-fill: #58a6ff;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-letter-spacing: 2;
+}
+
+/* Secondary button */
+.btn-secondary {
+    -fx-background-color: #21262d;
+    -fx-text-fill: #c9d1d9;
+    -fx-border-color: #30363d;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+    -fx-padding: 6 14;
+}
+
+.btn-secondary:hover {
+    -fx-background-color: #30363d;
+}
+
+/* Combo field */
+.combo-field {
+    -fx-background-color: #21262d;
+    -fx-text-fill: #c9d1d9;
+    -fx-border-color: #30363d;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+.combo-field .list-cell {
+    -fx-background-color: #21262d;
+    -fx-text-fill: #c9d1d9;
+}
+
+/* Start / End buttons (if not already in your CSS) */
+.btn-start {
+    -fx-background-color: #238636;
+    -fx-text-fill: white;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+    -fx-padding: 6 16;
+}
+
+.btn-start:hover { -fx-background-color: #2ea043; }
+.btn-start:disabled { -fx-opacity: 0.4; }
+
+.btn-end {
+    -fx-background-color: #da3633;
+    -fx-text-fill: white;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+    -fx-padding: 6 16;
+}
+
+.btn-end:hover { -fx-background-color: #f85149; }
+.btn-end:disabled { -fx-opacity: 0.4; }
+
+/* Field labels */
+.field-label {
+    -fx-text-fill: #8b949e;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+/* Hint label */
+.hint-label {
+    -fx-text-fill: #484f58;
+    -fx-font-size: 12px;
+}
+
+/* Status label */
+.status-label {
+    -fx-text-fill: #8b949e;
+    -fx-font-size: 12px;
+}
+

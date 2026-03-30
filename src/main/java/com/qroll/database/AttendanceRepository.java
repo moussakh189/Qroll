@@ -25,7 +25,7 @@ public class AttendanceRepository {
 
     public void save(AttendanceRecord r )
     {
-        String sql =sql = """
+        String sql  = """
             INSERT INTO attendance_records (student_id, session_id, scan_time, valid)
             VALUES (?,?,?,?)
         """;

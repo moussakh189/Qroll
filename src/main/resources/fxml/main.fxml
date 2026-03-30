@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.qroll.gui.MainController"
+            prefWidth="1100" prefHeight="720">
+
+    <center>
+        <TabPane fx:id="mainTabPane">
+            <tabs>
+                <Tab text="Session" closable="false">
+                    <fx:include fx:id="session" source="session.fxml"/>
+                </Tab>
+                <Tab text="Dashboard" closable="false">
+                    <fx:include fx:id="dashboard" source="dashboard.fxml"/>
+                </Tab>
+                <Tab text="Reports" closable="false">
+                    <fx:include source="report.fxml"/>
+                </Tab>
+                <Tab text="Students" closable="false">
+                    <fx:include source="student.fxml"/>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+
+</BorderPane>

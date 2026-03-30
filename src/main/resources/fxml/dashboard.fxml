@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="0"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.qroll.gui.DashboardController">
+
+   <HBox styleClass="stats-bar" spacing="32"  alignment="CENTER_LEFT">
+       <padding><Insets top="14" right="24" bottom="14" left="24"/></padding>
+       <VBox spacing="2">
+           <Label text="Present" styleClass="stat-label"/>
+           <Label fx:id="presentLabel" text="0" styleClass="stat-value-green"/>
+       </VBox>
+
+
+       <VBox spacing="2" alignment="CENTER_RIGHT">
+           <Label text="Last scan" styleClass="stat-label"/>
+           <Label fx:id="lastScanLabel" text="—" styleClass="stat-value"/>
+       </VBox>
+
+       <VBox spacing="2">
+           <Label text="Absent" styleClass="stat-label"/>
+           <Label fx:id="absentLabel" text="0" styleClass="stat-value-red"/>
+       </VBox>
+
+       <VBox spacing="2">
+           <Label text="Total" styleClass="stat-label"/>
+           <Label fx:id="totalLabel" text="0" styleClass="stat-value"/>
+       </VBox>
+
+
+
+
+   </HBox>
+
+    <HBox styleClass="search-bar" alignment="CENTER_LEFT" spacing="10">
+    <padding><Insets top="10" right="24" bottom="10" left="24"/></padding>
+
+        <Label text="Search:" styleClass="field-label"/>
+        <TextField fx:id="searchField"
+                   promptText="Name or student ID..."
+                   prefWidth="300"
+                   styleClass="search-field"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="sessionStatusLabel" text="No active session" styleClass="status-label"/>
+    </HBox>
+
+    <HBox VBox.vgrow="ALWAYS" spacing="1">
+
+        <VBox HBox.hgrow="ALWAYS" spacing="0">
+            <Label text="Present" styleClass="table-header-label">
+                <padding><Insets top="8" right="0" bottom="8" left="16"/></padding>
+            </Label>
+            <TableView fx:id="presentTable" VBox.vgrow="ALWAYS" styleClass="dark-table">
+                <columns>
+                    <TableColumn fx:id="idCol"    text="Student ID" prefWidth="110"/>
+                    <TableColumn fx:id="nameCol"  text="Name"       prefWidth="160"/>
+                    <TableColumn fx:id="groupCol" text="Group"      prefWidth="70"/>
+                    <TableColumn fx:id="timeCol"  text="Time"       prefWidth="80"/>
+                </columns>
+                <placeholder>
+                    <Label text="No scans yet" styleClass="hint-label"/>
+                </placeholder>
+            </TableView>
+        </VBox>
+
+
+        <VBox HBox.hgrow="ALWAYS" spacing="0">
+            <Label text="Absent" styleClass="table-header-label-red">
+                <padding><Insets top="8" right="0" bottom="8" left="16"/></padding>
+            </Label>
+            <TableView fx:id="absentTable" VBox.vgrow="ALWAYS" styleClass="dark-table">
+                <columns>
+                    <TableColumn fx:id="absentIdCol"    text="Student ID" prefWidth="110"/>
+                    <TableColumn fx:id="absentNameCol"  text="Name"       prefWidth="160"/>
+                    <TableColumn fx:id="absentGroupCol" text="Group"      prefWidth="70"/>
+                </columns>
+                <placeholder>
+                    <Label text="Everyone present!" styleClass="stat-value-green"/>
+                </placeholder>
+            </TableView>
+        </VBox>
+
+    </HBox>
+</VBox>

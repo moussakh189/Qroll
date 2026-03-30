@@ -26,7 +26,7 @@ public class TOTPEngine {
 
             int offset = hash[hash.length - 1 ] & 0x0f ;
 
-            int binary = ((hash[offset] & 0x7f << 24 )) |
+            int binary = ((hash[offset] & 0x7f )<< 24 ) |
                     ((hash[offset + 1 ] & 0xff ) << 16 ) |
                     ((hash[offset + 2 ] & 0xff) << 8 ) |
                     (hash[offset + 3 ] & 0xff );
