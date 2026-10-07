@@ -1,5 +1,6 @@
 package com.qroll.database;
 import org.sqlite.SQLiteConfig;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -7,9 +8,24 @@ import java.sql.Statement;
 
 public class DatabaseManager {
 
-    private static final String DB_URL = "jdbc:sqlite:qroll.db";
+    private static final String DB_URL = buildDbUrl();
     private static volatile DatabaseManager instance;
     private Connection connection;
+
+    /** Resolves to %APPDATA%\QRoll\qroll.db on Windows, ~/QRoll/qroll.db elsewhere. */
+    private static String buildDbUrl() {
+        String appData = System.getenv("APPDATA");
+        String baseDir = (appData != null && !appData.isBlank())
+                ? appData
+                : System.getProperty("user.home");
+        File dir = new File(baseDir, "QRoll");
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+        File dbFile = new File(dir, "qroll.db");
+        System.out.println("DatabaseManager: db path = " + dbFile.getAbsolutePath());
+        return "jdbc:sqlite:" + dbFile.getAbsolutePath().replace("\\", "/");
+    }
 
     private DatabaseManager() {
         try {
