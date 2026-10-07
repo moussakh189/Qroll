@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+
+<ScrollPane fitToWidth="true"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.qroll.gui.ReportController">
+
+    <VBox spacing="28">
+    <padding><Insets top="32" right="40" bottom="32" left="40"/></padding>
+        <Label text="Reports" styleClass="page-title"/>
+        <VBox spacing="14" styleClass="report-card" >
+            <padding><Insets top="20" right="24" bottom="20" left="24"/></padding>
+
+            <Label text="SESSION REPORT" styleClass="report-card-title"/>
+            <Label text="Export attendance for a specific session — who was present, who was absent, scan times."
+                   styleClass="hint-label" wrapText="true"/>
+
+
+            <HBox spacing="16"  alignment="CENTER_LEFT" >
+
+                <Label text="Session:"
+                       styleClass="field-label"/>
+                <ComboBox fx:id="sessionCombo"
+                          promptText="Select a session..."
+                          prefWidth="380"
+                          styleClass="combo-field"/>
+                <Button fx:id="refreshSessionsBtn"
+                        text="↻ Refresh"
+                        onAction="#onRefreshSessions"
+                        styleClass="btn-secondary"/>
+            </HBox>
+
+            <HBox spacing="12">
+                <Button fx:id="exportSessionBtn"
+                        text="Export Session CSV"
+                        onAction="#onExportSession"
+                        prefWidth="200" prefHeight="38"
+                        styleClass="btn-start"/>
+            </HBox>
+
+            <Label fx:id="sessionReportStatus" text="" styleClass="hint-label"/>
+
+        </VBox>
+
+    <VBox spacing="14" styleClass="report-card">
+        <padding><Insets top="20" right="24" bottom="20" left="24"/></padding>
+        <Label text="STUDENT REPORT" styleClass="report-card-title"/>
+        <Label text="Export a student's full attendance history across all modules with rate calculations."
+               styleClass="hint-label" wrapText="true"/>
+
+        <HBox spacing="16" alignment="CENTER_LEFT">
+            <Label text="Student:" styleClass="field-label"/>
+            <ComboBox fx:id="studentCombo"
+                      promptText="Select a student..."
+                      prefWidth="380"
+                      styleClass="combo-field"/>
+            <Button fx:id="refreshStudentsBtn"
+                    text="↻ Refresh"
+                    onAction="#onRefreshStudents"
+                    styleClass="btn-secondary"/>
+        </HBox>
+
+        <HBox spacing="12">
+            <Button fx:id="exportStudentBtn"
+                    text="Export Student CSV"
+                    onAction="#onExportStudent"
+                    prefWidth="200" prefHeight="38"
+                    styleClass="btn-start"/>
+        </HBox>
+
+        <Label fx:id="studentReportStatus" text="" styleClass="hint-label"/>
+    </VBox>
+    </VBox>
+</ScrollPane>
